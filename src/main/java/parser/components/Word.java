@@ -5,21 +5,34 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Word extends Component {
-    List<Symbol> word = new ArrayList<Symbol>();
+    private List<Component> symbols = new ArrayList<Component>();
 
-    public Word(Symbol ... word) {
-        this.word = Arrays.asList(word);
+    public Word(Component ... symbols) {
+        this.symbols = Arrays.asList(symbols);
     }
 
-    public List<Symbol> getWord() {
-        return word;
+    public List<Component> getWord() {
+        return symbols;
     }
 
-    public void setWord(Symbol ... word) {
-        this.word = Arrays.asList(word);
+    public void add(Symbol symbol) {
+        this.symbols.add(symbol);
+    }
+
+    public void setWord(Component ... symbols) {
+        this.symbols = Arrays.asList(symbols);
     }
 
     public void print() {
-        for (Symbol s : word) s.print();
+        for (Component s : symbols) s.print();
+    }
+
+    public String get() {
+        StringBuilder string = new StringBuilder();
+        for(Component c : symbols){
+            string.append(c.get());
+        }
+        return string.toString();
     }
 }
+

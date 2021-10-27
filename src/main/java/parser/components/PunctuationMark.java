@@ -1,21 +1,26 @@
 package parser.components;
 
 public class PunctuationMark extends Component {
-    Character c = ' ';
+    private String s = "";
 
-    public PunctuationMark(Character c) {
-        this.c = c;
+    public PunctuationMark(String s) {
+        this.s = s;
     }
 
-    public Character getC() {
-        return c;
+    public String getC() {
+        return s;
     }
 
-    public void setC(Character c) {
-        this.c = c;
+    public void setC(String c) {
+        this.s = s;
     }
 
     public void print() {
-        System.out.println(c);
+        System.out.println(s);
+    }
+
+
+    public String get() {
+        return s;
     }
 }

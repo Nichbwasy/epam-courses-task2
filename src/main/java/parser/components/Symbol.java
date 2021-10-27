@@ -1,21 +1,25 @@
 package parser.components;
 
 public class Symbol extends Component {
-    Character c = ' ';
+    private String s = "";
 
-    public Symbol(Character c) {
-        this.c = c;
+    public Symbol(String s) {
+        this.s = s;
     }
 
-    public Character getC() {
-        return c;
+    public String getC() {
+        return s;
     }
 
-    public void setC(Character c) {
-        this.c = c;
+    public void setC(String c) {
+        this.s = s;
     }
 
     public void print() {
-        System.out.print(c);
+        System.out.print(s);
+    }
+
+    public String get() {
+        return s;
     }
 }
