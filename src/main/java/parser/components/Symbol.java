@@ -10,11 +10,11 @@ public class Symbol extends Component {
         this.s = s;
     }
 
-    public String getS() {
+    public String getValue() {
         return s;
     }
 
-    public void setS(String c) {
+    public void setValue(String c) {
         this.s = s;
     }
 
