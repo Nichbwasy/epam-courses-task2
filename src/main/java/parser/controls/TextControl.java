@@ -4,6 +4,7 @@ import parser.common.RegExConst;
 import parser.components.Component;
 import parser.components.PunctuationMark;
 import parser.components.Symbol;
+import parser.components.Text;
 import parser.composite.TextComposite;
 
 import java.util.regex.Matcher;

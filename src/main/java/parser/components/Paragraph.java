@@ -18,10 +18,10 @@ public class Paragraph extends Component{
         this.sentences.add(sentence);
     }
 
-    public String get() {
+    public String buildText() {
         StringBuilder string = new StringBuilder();
         for(Component c : sentences){
-            string.append(c.get());
+            string.append(c.buildText());
         }
         return string.toString();
     }

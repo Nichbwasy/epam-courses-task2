@@ -13,12 +13,11 @@ public class TextComposite extends Component {
         this.texts.add(text);
     }
 
-    public String get() {
+    public String buildText() {
         StringBuilder string = new StringBuilder();
         for (Component c : texts) {
-            string.append(c.get());
+            string.append(c.buildText());
         }
-        //string.append("\n");
         return string.toString();
     }
 

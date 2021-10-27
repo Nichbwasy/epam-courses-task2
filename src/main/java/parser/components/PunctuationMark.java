@@ -20,7 +20,7 @@ public class PunctuationMark extends Component {
     }
 
 
-    public String get() {
+    public String buildText() {
         return s;
     }
 }

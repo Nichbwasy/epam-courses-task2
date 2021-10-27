@@ -1,5 +1,8 @@
 package parser.components;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Symbol extends Component {
     private String s = "";
 
@@ -7,19 +10,21 @@ public class Symbol extends Component {
         this.s = s;
     }
 
-    public String getC() {
+    public String getS() {
         return s;
     }
 
-    public void setC(String c) {
+    public void setS(String c) {
         this.s = s;
     }
 
+    @Override
     public void print() {
         System.out.print(s);
     }
 
-    public String get() {
+    @Override
+    public String buildText() {
         return s;
     }
 }

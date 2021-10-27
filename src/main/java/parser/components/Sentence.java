@@ -22,10 +22,10 @@ public class Sentence extends Component{
         this.words.add(mark);
     }
 
-    public String get() {
+    public String buildText() {
         StringBuilder string = new StringBuilder();
         for(Component c : words){
-            string.append(c.get());
+            string.append(c.buildText());
         }
         return string.toString();
     }

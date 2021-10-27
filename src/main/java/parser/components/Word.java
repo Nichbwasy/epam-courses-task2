@@ -27,10 +27,10 @@ public class Word extends Component {
         for (Component s : symbols) s.print();
     }
 
-    public String get() {
+    public String buildText() {
         StringBuilder string = new StringBuilder();
         for(Component c : symbols){
-            string.append(c.get());
+            string.append(c.buildText());
         }
         return string.toString();
     }

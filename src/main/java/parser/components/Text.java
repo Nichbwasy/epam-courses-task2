@@ -18,14 +18,17 @@ public class Text extends Component {
         this.paragraphs.add(paragraph);
     }
 
-    public String get() {
+    @Override
+    public String buildText() {
         StringBuilder string = new StringBuilder();
         for(Component c : paragraphs){
-            string.append(c.get());
+            string.append(c.buildText());
         }
+        string.append("\n");
         return string.toString();
     }
 
+    @Override
     public void print() {
         for(Component c : paragraphs) {
             c.print();
