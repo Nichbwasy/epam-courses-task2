@@ -1,8 +1,13 @@
-package parser.utils;
+package parser.classes.utils;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
 public class FileToString {
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileToString.class);
+
     public static String readFile(File file){
         StringBuilder result = new StringBuilder();
         if (isTxtFile(file)) {

@@ -1,17 +1,17 @@
-package parser.controls;
+package parser.classes.parsers;
 
-import parser.common.ComponentTypes;
-import parser.common.RegExConst;
-import parser.components.Component;
-import parser.components.Symbol;
-import parser.composite.TextComposite;
-import parser.utils.FileToString;
+import parser.classes.common.ComponentTypes;
+import parser.classes.common.RegExConst;
+import parser.classes.components.Component;
+import parser.classes.components.Symbol;
+import parser.classes.composite.TextComposite;
+import parser.classes.utils.FileToString;
 
 import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TextControl {
+public class TextParser {
     public static TextComposite parseText(String ... texts){
         TextComposite textComposite = new TextComposite();
         for(String text : texts){

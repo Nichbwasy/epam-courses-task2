@@ -1,7 +1,7 @@
-package parser.composite;
+package parser.classes.composite;
 
-import parser.common.ComponentTypes;
-import parser.components.Component;
+import parser.classes.common.ComponentTypes;
+import parser.classes.components.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +28,6 @@ public class TextComposite extends Component {
             c.print();
         }
         if(this.getType() == ComponentTypes.TEXT || this.getType() == ComponentTypes.PARAGRAPH)
-            System.out.println("\n");
+            System.out.println();
     }
 }

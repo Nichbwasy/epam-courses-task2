@@ -1,6 +1,6 @@
-package parser.components;
+package parser.classes.components;
 
-import parser.common.ComponentTypes;
+import parser.classes.common.ComponentTypes;
 
 public abstract class Component {
     private ComponentTypes type;

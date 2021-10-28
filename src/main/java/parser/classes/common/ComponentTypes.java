@@ -1,4 +1,4 @@
-package parser.common;
+package parser.classes.common;
 
 public enum ComponentTypes {
     TEXT,

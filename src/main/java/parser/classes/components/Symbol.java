@@ -1,7 +1,4 @@
-package parser.components;
-
-import java.util.ArrayList;
-import java.util.List;
+package parser.classes.components;
 
 public class Symbol extends Component {
     private String s = "";
