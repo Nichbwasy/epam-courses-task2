@@ -19,13 +19,15 @@ public class TextParser {
     public static TextComposite parseText(String ... texts){
         TextComposite textComposite = new TextComposite();
         for(String text : texts){
-           textComposite.add(parseElement(text, 5));
+            LOGGER.info("Starts text parsing: {}", text);
+            textComposite.add(parseElement(text, 5));
         }
         return textComposite;
     }
     public static TextComposite parseText(File... files) {
         TextComposite textComposite = new TextComposite();
         for(File file : files){
+            LOGGER.info("Starts parsing file: {}", file.getName());
             String text = FileToString.readFile(file);
             textComposite.add(parseElement(text, 5));
         }
@@ -36,7 +38,13 @@ public class TextParser {
         TextComposite textComposite = new TextComposite();
         textComposite.setType(getType(patternId));
         Matcher matcher = getPattern(patternId).matcher(element);
+        LOGGER.info("Starts parsing element: {}", element);
         while (matcher.find()){
+            LOGGER.info("New component [{}] has been found at [{}, {}] position in element {}",
+                    element.substring(matcher.start(), matcher.end()),
+                    matcher.start(),
+                    matcher.end(),
+                    element);
             if (patternId > 1){
                 textComposite.add(parseElement(matcher.group(),patternId - 1));
                 if (patternId == 2) {
