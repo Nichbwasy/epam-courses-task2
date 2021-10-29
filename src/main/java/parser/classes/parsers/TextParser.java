@@ -1,5 +1,7 @@
 package parser.classes.parsers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import parser.classes.common.ComponentTypes;
 import parser.classes.common.RegExConst;
 import parser.classes.components.Component;
@@ -12,6 +14,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextParser {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TextParser.class);
+
     public static TextComposite parseText(String ... texts){
         TextComposite textComposite = new TextComposite();
         for(String text : texts){
@@ -34,42 +38,47 @@ public class TextParser {
         Matcher matcher = getPattern(patternId).matcher(element);
         while (matcher.find()){
             if (patternId > 1){
-                textComposite.add(parseElement(
-                        matcher.group(),
-                        patternId - 1
-                ));
+                textComposite.add(parseElement(matcher.group(),patternId - 1));
                 if (patternId == 2) {
-                    Matcher pctMatcher = getPattern(0).matcher(element);
-                    while (pctMatcher.find())
-                        if (pctMatcher.start() > matcher.start()) {
-                            String s = pctMatcher.group();
-                            textComposite.add(parseElement(pctMatcher.group(), 0));
-                            Matcher next = getPattern(0).matcher(element);
-                            try {
-                                next = next.region(pctMatcher.start() + 1, pctMatcher.end() + 1);
-                                if (next.find()) {
-                                    continue;
-                                }
-                                else break;
-                            } catch (IndexOutOfBoundsException e) {
-                                break;
-                            }
-                        }
+                    CheckNextElement(element, textComposite, matcher);
                 }
             } else {
-                if (patternId == 1) {
-                    Symbol symbol = new Symbol(element);
-                    symbol.setType(ComponentTypes.SYMBOL);
-                    return symbol;
-                }
-                if (patternId == 0) {
-                    Symbol symbol = new Symbol(element);
-                    symbol.setType(ComponentTypes.PUNCTUATION_MARK);
-                    return symbol;
-                }
+                return generateComponent(element, patternId);
             }
         }
         return textComposite;
+    }
+
+    private static Component generateComponent(String element, Integer patternId) {
+        if (patternId == 1) {
+            Symbol symbol = new Symbol(element);
+            symbol.setType(ComponentTypes.SYMBOL);
+            return symbol;
+        }
+        if (patternId == 0) {
+            Symbol symbol = new Symbol(element);
+            symbol.setType(ComponentTypes.PUNCTUATION_MARK);
+            return symbol;
+        }
+        return null;
+    }
+
+    private static void CheckNextElement(String element, TextComposite textComposite, Matcher matcher) {
+        Matcher pctMatcher = getPattern(0).matcher(element);
+        while (pctMatcher.find()) {
+            if (pctMatcher.start() > matcher.start()) {
+                textComposite.add(parseElement(pctMatcher.group(), 0));
+                Matcher next = getPattern(0).matcher(element);
+                try {
+                    next = next.region(pctMatcher.start() + 1, pctMatcher.end() + 1);
+                    if (next.find()) {
+                        continue;
+                    } else break;
+                } catch (IndexOutOfBoundsException e) {
+                    break;
+                }
+            }
+        }
     }
 
     private static Pattern getPattern(Integer i){

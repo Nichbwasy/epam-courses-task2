@@ -1,5 +1,8 @@
 package parser.classes.components;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Symbol extends Component {
     private String s = "";
 
@@ -23,5 +26,10 @@ public class Symbol extends Component {
     @Override
     public String buildText() {
         return s;
+    }
+
+    @Override
+    public List<Component> getAll() {
+        return Collections.singletonList(this);
     }
 }

@@ -17,12 +17,15 @@ public class FileToString {
                     result.append((char)c);
                 }
             } catch (FileNotFoundException e){
-                System.out.println("aaa");
+                LOGGER.error(e.getMessage());
                 return result.toString();
             } catch (IOException e) {
-                System.out.println();
+                LOGGER.error(e.getMessage());
                 return result.toString();
             }
+            LOGGER.info("File {} was read", file.getName());
+        } else {
+            LOGGER.warn("File {} wasn't read", file.getName());
         }
         return result.toString();
     }

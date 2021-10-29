@@ -6,5 +6,5 @@ public class RegExConst {
     public static final String SENTENCE = "[А-яA-z0-9 \\t\\,\\(\\)\\_\\-\\:\\;\\\"\\'\\/]+[\\.|?|!]+ ?";
     public static final String WORD = "[\\w\\d]+";
     public static final String PUNCTUATION_MARK = "[ .,;:()'\\\"\\-\\!\\?<>]";
-    public static final String SYMBOL = "[\\w\\d]+";
+    public static final String SYMBOL = "[\\w\\d]";
 }
