@@ -16,6 +16,12 @@ import java.util.regex.Pattern;
 public class TextParser {
     private static final Logger LOGGER = LoggerFactory.getLogger(TextParser.class);
 
+    /**
+     * Accepts strings and parsing them on components. Returns text composite
+     * contains parsed text components.
+     * @param texts Text for parsing
+     * @return Text composite which contains parsed text
+     */
     public static TextComposite parseText(String ... texts){
         TextComposite textComposite = new TextComposite();
         for(String text : texts){
@@ -24,6 +30,13 @@ public class TextParser {
         }
         return textComposite;
     }
+
+    /**
+     * Accepts .txt files with text and parsing it on components. Returns text composite
+     * contains parsed text components.
+     * @param files Text files for parsing
+     * @return Text composite which contains parsed text
+     */
     public static TextComposite parseText(File... files) {
         TextComposite textComposite = new TextComposite();
         for(File file : files){
@@ -33,6 +46,7 @@ public class TextParser {
         }
         return textComposite;
     }
+
 
     private static Component parseElement(String element, Integer patternId){
         TextComposite textComposite = new TextComposite();
